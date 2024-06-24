@@ -37,7 +37,7 @@ public class CategoriesController {
         return categoryDao.getById(idNumber);
     }
 
-    // the url to return all products in category 1 would look like this
+    //TODO - add the url path
     // https://localhost:8080/categories/1/products
     @GetMapping("{categoryId}/products")
     public List<Product> getProductsById(@PathVariable int categoryId) {
@@ -59,10 +59,11 @@ public class CategoriesController {
     }
 
 
-    // add annotation to call this method for a DELETE action - the url path must include the categoryId
+    //TODO - add the url path - must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
-    public void deleteCategory(@PathVariable int id)
-    {
-        // delete the category by id
+    @RequestMapping(path = "/categories/{categoryId}", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void deleteCategory(@PathVariable int id) {
+        categoryDao.delete(id);
     }
 }
