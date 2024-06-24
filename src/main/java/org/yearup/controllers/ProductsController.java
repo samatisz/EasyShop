@@ -26,13 +26,13 @@ public class ProductsController
 
     @GetMapping("")
     @PreAuthorize("permitAll()")
-    public List<Product> search(@RequestParam(name="cat", required = false) Integer categoryId,
+    public List<Product> search(@RequestParam(name="cat", required = false) Integer categoryId, //!!!! i think this needs fixed
                                 @RequestParam(name="minPrice", required = false) BigDecimal minPrice,
                                 @RequestParam(name="maxPrice", required = false) BigDecimal maxPrice,
                                 @RequestParam(name="color", required = false) String color
                                 )
     {
-        try
+        try //this def needs fixed, looks empty
         {
             return productDao.search(categoryId, minPrice, maxPrice, color);
         }
@@ -42,8 +42,8 @@ public class ProductsController
         }
     }
 
-    @GetMapping("{id}")
-    @PreAuthorize("permitAll()")
+    @GetMapping("{id}") //
+    @PreAuthorize("permitAll()") //is this correct????
     public Product getById(@PathVariable int id )
     {
         try

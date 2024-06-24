@@ -10,11 +10,10 @@ import org.yearup.models.Product;
 
 import java.util.List;
 
-//TODO add the annotation to make this controller the endpoint for the following url
 // http://localhost:8080/categories
-// add annotation to allow cross site origin requests
 
 @RestController
+@CrossOrigin
 public class CategoriesController {
     private final CategoryDao categoryDao;
     private final ProductDao productDao;
