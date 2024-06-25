@@ -1,12 +1,17 @@
 package org.yearup.data.mysql;
 
+import org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -18,23 +23,58 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     }
 
     @Override
-    public List<Category> getAllCategories()
+    public List<Category> getAllCategories() // get help with this one
     {
         // get all categories
         return null;
     }
 
     @Override
-    public Category getById(int categoryId)
-    {
-        // get category by id
+    public Category getById(int categoryId) {
+
+        String sql = "SELECT * FROM categories " +
+                     "WHERE category_id = ?";
+
+        try(Connection connection = getConnection()) {
+            PreparedStatement prepState = connection.prepareStatement(sql);
+            prepState.setInt(1, categoryId);
+
+            ResultSet results = prepState.executeQuery();
+            if (results.next()) {
+                return mapRow(results);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
     @Override
-    public Category create(Category category)
-    {
-        // create a new category
+    public Category create(Category category) {
+        String sql = "INSERT INTO categories(category_id, name, description" +
+                     "VALUES (?, ?, ?);";
+
+        try (Connection connection = getConnection()) {
+            PreparedStatement prepState = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            prepState.setInt(1,category.getCategoryId());
+            prepState.setString(2, category.getName());
+            prepState.setString(3, category.getDescription());
+
+            int newRows = prepState.executeUpdate();
+
+            if(newRows > 0) {
+                ResultSet genKeys = prepState.getGeneratedKeys();
+
+                if(genKeys.next()) {
+                    int orderId = genKeys.getInt(1);
+                    return getById(orderId);
+                }
+            }
+        }
+
+        catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
