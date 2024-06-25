@@ -39,7 +39,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
             e.printStackTrace();
         }
 
-        return null;
+        return categories;
     }
 
     @Override
@@ -64,14 +64,13 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
     @Override
     public Category create(Category category) {
-        String sql = "INSERT INTO categories(category_id, name, description" +
-                     "VALUES (?, ?, ?);";
+        String sql = "INSERT INTO categories(name, description) " +
+                     " VALUES (?, ?);";
 
         try (Connection connection = getConnection()) {
             PreparedStatement prepState = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-            prepState.setInt(1,category.getCategoryId());
-            prepState.setString(2, category.getName());
-            prepState.setString(3, category.getDescription());
+            prepState.setString(1, category.getName());
+            prepState.setString(2, category.getDescription());
 
             int newRows = prepState.executeUpdate();
 
@@ -93,9 +92,9 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
     @Override
     public void update(int categoryId, Category category) {
-        String sql = "UPDATE products" +
+        String sql = "UPDATE categories " +
                      "SET name = ? " +
-                     ", description = ?; " +
+                     ", description = ? " +
                      "WHERE category_id = ?";
 
         try (Connection connection = getConnection()) {
@@ -113,8 +112,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public void delete(int categoryId) {
 
-        String sql = "DELETE FROM categories" +
-                     "WHERE product_id = ?;";
+        String sql = "DELETE FROM categories " +
+                     "WHERE category_id = ?;";
 
         try(Connection connection = getConnection()) {
             PreparedStatement prepState = connection.prepareStatement(sql);
@@ -129,13 +128,13 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
 
     private Category mapRow(ResultSet row) throws SQLException
     {
-        int categoryId = row.getInt("category_id");
+        int id = row.getInt("category_id");
         String name = row.getString("name");
         String description = row.getString("description");
 
         Category category = new Category()
         {{
-            setCategoryId(categoryId);
+            setCategoryId(id);
             setName(name);
             setDescription(description);
         }};

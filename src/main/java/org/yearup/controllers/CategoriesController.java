@@ -33,21 +33,33 @@ public class CategoriesController {
         return categoryList;
     }
 
-    @GetMapping("")
-    public Category getCategoryById(@PathVariable int idNumber) {
-        return categoryDao.getById(idNumber);
-    }
-
-    @GetMapping("/products")
-    public List<Product> getProductsById(@PathVariable int categoryId) {
+    @GetMapping("{id}")
+    public Category getCategoryById(@PathVariable int id) {
+        Category category = null;
         try
         {
-            var cat = categoryDao.getById(categoryId);
+          category = categoryDao.getById(id);
+        }
+        catch(Exception ex)
+        {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
+        if(category == null)
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+        return category;
+    }
+
+    @GetMapping("{id}/products")
+    public List<Product> getProductsById(@PathVariable int id) {
+        try
+        {
+            var cat = categoryDao.getById(id);
 
             if(cat == null)
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
-            return productDao.search(categoryId, null, null, null); //might be wrong, ask Ben
+            return productDao.search(id, null, null, null); //might be wrong, ask Ben
         }
         catch(Exception ex)
         {
@@ -55,7 +67,7 @@ public class CategoriesController {
         }
     }
 
-    @GetMapping("")
+    @PostMapping("")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(value = HttpStatus.CREATED)
     public Category addCategory(@RequestBody Category category) {
@@ -69,11 +81,11 @@ public class CategoriesController {
     }
 
 
-    @GetMapping("{categoryId}")
+    @PutMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void updateCategory(@PathVariable int categoryId, @RequestBody Category category) {
+    public void updateCategory(@PathVariable int id, @RequestBody Category category) {
         try{
-            categoryDao.update(categoryId, category);
+            categoryDao.update(id, category);
         }
         catch(Exception e)
         {
@@ -82,7 +94,7 @@ public class CategoriesController {
 
     }
 
-    @GetMapping("{categoryId}")
+    @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable int id) {
