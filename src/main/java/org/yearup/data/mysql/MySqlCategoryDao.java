@@ -1,7 +1,6 @@
 package org.yearup.data.mysql;
 
-import org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter;
-import org.springframework.security.access.method.P;
+
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
@@ -23,9 +22,23 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     }
 
     @Override
-    public List<Category> getAllCategories() // get help with this one
-    {
-        // get all categories
+    public List<Category> getAllCategories() {
+        List<Category> categories = new ArrayList<>();
+        String sql = "SELECT * FROM Categories";
+
+        try (Connection connection = getConnection();
+             PreparedStatement prepState = connection.prepareStatement(sql);
+             ResultSet results = prepState.executeQuery()) {
+            while(results.next()) {
+                int categoryId = results.getInt("category_id");
+                String categoryName = results.getString("name");
+                String description = results.getString("description");
+                categories.add(new Category(categoryId, categoryName, description));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
@@ -81,26 +94,37 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public void update(int categoryId, Category category) {
         String sql = "UPDATE products" +
-                "SET category_id = ? " +
-                "    , name = ? " +
-                "    , description = ?; ";
+                     "SET name = ? " +
+                     ", description = ?; " +
+                     "WHERE category_id = ?";
 
         try (Connection connection = getConnection()) {
             PreparedStatement presState = connection.prepareStatement(sql);
-            presState.setInt(1, category.getCategoryId());
-            presState.setString(2, category.getName());
-            presState.setString(3, category.getDescription());
+            presState.setString(1, category.getName());
+            presState.setString(2, category.getDescription());
+            presState.setInt(3, categoryId);
 
             presState.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }         
+    }
 
     @Override
-    public void delete(int categoryId)
-    {
-        // delete category
+    public void delete(int categoryId) {
+
+        String sql = "DELETE FROM categories" +
+                     "WHERE product_id = ?;";
+
+        try(Connection connection = getConnection()) {
+            PreparedStatement prepState = connection.prepareStatement(sql);
+            prepState.setInt(1, categoryId);
+
+            prepState.executeUpdate();
+        }  catch (SQLException e) {
+
+            throw new RuntimeException(e);
+        }
     }
 
     private Category mapRow(ResultSet row) throws SQLException
