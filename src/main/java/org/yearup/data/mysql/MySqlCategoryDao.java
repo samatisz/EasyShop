@@ -79,10 +79,23 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     }
 
     @Override
-    public void update(int categoryId, Category category)
-    {
-        // update category
-    }
+    public void update(int categoryId, Category category) {
+        String sql = "UPDATE products" +
+                "SET category_id = ? " +
+                "    , name = ? " +
+                "    , description = ?; ";
+
+        try (Connection connection = getConnection()) {
+            PreparedStatement presState = connection.prepareStatement(sql);
+            presState.setInt(1, category.getCategoryId());
+            presState.setString(2, category.getName());
+            presState.setString(3, category.getDescription());
+
+            presState.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }         
 
     @Override
     public void delete(int categoryId)
