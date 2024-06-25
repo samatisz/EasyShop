@@ -11,7 +11,4 @@ public interface CategoryDao
     Category create(Category category);
     void update(int categoryId, Category category);
     void delete(int categoryId);
-
-    Category insert(Category category);
-    //TODO need to fix this - needed it for CategoriesController
 }

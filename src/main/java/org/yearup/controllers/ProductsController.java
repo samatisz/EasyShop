@@ -32,7 +32,7 @@ public class ProductsController
                                 @RequestParam(name="color", required = false) String color
                                 )
     {
-        try //this def needs fixed, looks empty
+        try
         {
             return productDao.search(categoryId, minPrice, maxPrice, color);
         }
@@ -43,7 +43,7 @@ public class ProductsController
     }
 
     @GetMapping("{id}") //
-    @PreAuthorize("permitAll()") //is this correct????
+    @PreAuthorize("permitAll()")
     public Product getById(@PathVariable int id )
     {
         try
@@ -81,7 +81,7 @@ public class ProductsController
     {
         try
         {
-            productDao.create(product);
+            productDao.update(id, product);
         }
         catch(Exception ex)
         {
