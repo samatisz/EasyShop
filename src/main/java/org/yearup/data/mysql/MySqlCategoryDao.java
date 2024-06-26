@@ -78,8 +78,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
                 ResultSet genKeys = prepState.getGeneratedKeys();
 
                 if(genKeys.next()) {
-                    int orderId = genKeys.getInt(1);
-                    return getById(orderId);
+                    int categoryId = genKeys.getInt(1);
+                    return getById(categoryId);
                 }
             }
         }

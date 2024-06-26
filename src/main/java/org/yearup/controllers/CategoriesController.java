@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("categories")
 @CrossOrigin
 public class CategoriesController {
     private final CategoryDao categoryDao;
@@ -28,7 +28,7 @@ public class CategoriesController {
 
     @GetMapping("")
     @PreAuthorize("permitAll()")
-    public List<Category> getAllCategories() { //TODO need to fix this one i think????
+    public List<Category> getAllCategories() { //make a try catch for this
         List<Category> categoryList = categoryDao.getAllCategories();
         return categoryList;
     }
@@ -51,7 +51,7 @@ public class CategoriesController {
     }
 
     @GetMapping("{id}/products")
-    public List<Product> getProductsById(@PathVariable int id) {
+    public List<Product> getProductsById(@PathVariable int id) { //fix this one
         try
         {
             var cat = categoryDao.getById(id);
@@ -59,7 +59,7 @@ public class CategoriesController {
             if(cat == null)
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
-            return productDao.search(id, null, null, null); //might be wrong, ask Ben
+            return productDao.search(id, null, null, null); 
         }
         catch(Exception ex)
         {
