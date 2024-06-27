@@ -28,13 +28,19 @@ public class CategoriesController {
 
     @GetMapping("")
     @PreAuthorize("permitAll()")
-    public List<Category> getAllCategories() { //make a try catch for this
-        List<Category> categoryList = categoryDao.getAllCategories();
-        return categoryList;
+    public List<Category> getAllCategories() {
+        try {
+            List<Category> categoryList = categoryDao.getAllCategories();
+            return categoryList;
+
+        } catch(Exception ex) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
+
     }
 
     @GetMapping("{id}")
-    public Category getCategoryById(@PathVariable int id) {
+    public Category getById(@PathVariable int id) {
         Category category = null;
         try
         {
@@ -54,12 +60,11 @@ public class CategoriesController {
     public List<Product> getProductsById(@PathVariable int id) { //fix this one
         try
         {
-            var cat = categoryDao.getById(id);
+            var category = categoryDao.getById(id);
 
-            if(cat == null)
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-
-            return productDao.search(id, null, null, null); 
+            if(category == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found.");
+            return productDao.search(id, null, null, null);
         }
         catch(Exception ex)
         {
