@@ -1,10 +1,10 @@
 # Hearth Shire Home Goods Online Store
 
 
-<b>This is the store website fofr the Hearth Fire Home Goods store. The store is a home goods store specifically for Hobbit Folk and Shirelings from J.R.R. Tolkien's Lord of the Rings and Hobbit books. The store offers a variety of supplies such as furniture, bedding, gardening supplies, and paint to make a hobbit hole your home. It was created by using SQL, Java (IntelliJ, and Postman).
+<b>This is the store website for the Hearth Fire Home Goods store. The store is a home goods store specifically for Hobbit Folk and Shirelings from J.R.R. Tolkien's Lord of the Rings and Hobbit books. The store offers a variety of supplies such as furniture, bedding, gardening supplies, and paint to make a hobbit hole your home. It was created by using SQL, Java (IntelliJ, and Postman).
 The categories in the store are: 
-1. Home Decore and Kitchen: Even the smallest person can change the course of the furniture. We have everything to make your hobbit hole into a hobbit home. Eatery, bedding and desks to give your living space a cozy cottagecore-hobbit vibe. 
-2. Paint: Every hobit hole must look exquisite. We offer a wide variety of paint colors for all homes. From dark hearted dark lords, to princely elven kings; we have the perfect shade of paint for you.
+1. Home Decor and Kitchen: Even the smallest person can change the course of the furniture. We have everything to make your hobbit hole into a hobbit home. Eatery, bedding and desks to give your living space a cozy cottagecore-hobbit vibe. 
+2. Paint: Every hobbit hole must look exquisite. We offer a wide variety of paint colors for all homes. From dark hearted dark lords, to princely elven kings; we have the perfect shade of paint for you.
 3. Gardening Essentials: If there is one things hobbits love more than a good mug of ale and a fresh cheese wheel, it's gardening. We offer a wide variety of seeds as well as supplies to get your garden green and growing.</b>
 
 ## User Stories
@@ -69,7 +69,7 @@ This is a section of the SQL database that I worked in to add my own products to
 
 Outline potential future enhancements or functionalities you might consider adding:
 
-- I would like to complete the shoppoing cart so that the website can become fully functional
+- I would like to complete the shopping cart so that the website can become fully functional
 - It would be nice to learn more front end coding such as JavaScript so that I can do more to the website cosmetically 
 
 ## Resources
@@ -78,7 +78,7 @@ List resources such as tutorials, articles, or documentation that helped you dur
 
 - Stack Overflow
 - Raymond's Solutions on GitHub
-- Worbooks from Class
+- Workbooks from Class
 
 ## Team Members
 
