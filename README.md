@@ -61,6 +61,9 @@ This shows the other class it all of the CSS code. I imported my own images and 
 ![image](https://github.com/samatisz/EasyShop/assets/166551695/4bb98eb6-56ac-4e59-b22a-570c254ce7ed)
 This was my final test run in Postman showing no fails. 
 
+![image](https://github.com/samatisz/EasyShop/assets/166551695/00a2fcfc-f591-437f-a54d-2c603c78d7da)
+This is a section of the SQL database that I worked in to add my own products to the store.
+
 
 
 ## Future Work
