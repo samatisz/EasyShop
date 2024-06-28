@@ -3,6 +3,10 @@
 ## Description of the Project
 
 Using SQL, IntelliJ, and Postman this project is the store website for Hearth Shire Home Goods. The store is a home goods store specifically for Hobbit Folk and Shirelings from J.R.R. Tolkien's Lord of the Rings and Hobbit books. The store offers a variety of supplies such as furniture, bedding, gardening supplies, and paint to make a hobbit hole your home. 
+The categories in the store are: 
+1. Home Decore and Kitchen: Even the smallest person can change the course of the furniture. We have everything to make your hobbit hole into a hobbit home.
+2. Paint: Every hobit hole must look exquisite. We offer a wide variety of paint colors for all homes.
+3. Gardening Essentials: If there is one things hobbits love more than a good mug of ale and a fresh cheese wheel, it's gardening.
 
 ## User Stories
 
@@ -70,8 +74,9 @@ Outline potential future enhancements or functionalities you might consider addi
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- I looked at past excercises done in class
 - Stack Overflow
+- Raymond's Solutions on GitHub
+- Worbooks from Class
 
 ## Team Members
 
