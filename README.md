@@ -1,11 +1,11 @@
 # Hearth Shire Home Goods Online Store
 
 
-<b>Using SQL, IntelliJ, and Postman this project is the store website for Hearth Shire Home Goods. The store is a home goods store specifically for Hobbit Folk and Shirelings from J.R.R. Tolkien's Lord of the Rings and Hobbit books. The store offers a variety of supplies such as furniture, bedding, gardening supplies, and paint to make a hobbit hole your home. 
+<b>This is the store website fofr the Hearth Fire Home Goods store. The store is a home goods store specifically for Hobbit Folk and Shirelings from J.R.R. Tolkien's Lord of the Rings and Hobbit books. The store offers a variety of supplies such as furniture, bedding, gardening supplies, and paint to make a hobbit hole your home. It was created by using SQL, Java (IntelliJ, and Postman).
 The categories in the store are: 
-1. Home Decore and Kitchen: Even the smallest person can change the course of the furniture. We have everything to make your hobbit hole into a hobbit home.
-2. Paint: Every hobit hole must look exquisite. We offer a wide variety of paint colors for all homes.
-3. Gardening Essentials: If there is one things hobbits love more than a good mug of ale and a fresh cheese wheel, it's gardening.</b>
+1. Home Decore and Kitchen: Even the smallest person can change the course of the furniture. We have everything to make your hobbit hole into a hobbit home. Eatery, bedding and desks to give your living space a cozy cottagecore-hobbit vibe. 
+2. Paint: Every hobit hole must look exquisite. We offer a wide variety of paint colors for all homes. From dark hearted dark lords, to princely elven kings; we have the perfect shade of paint for you.
+3. Gardening Essentials: If there is one things hobbits love more than a good mug of ale and a fresh cheese wheel, it's gardening. We offer a wide variety of seeds as well as supplies to get your garden green and growing.</b>
 
 ## User Stories
 
@@ -16,7 +16,7 @@ https://github.com/users/samatisz/projects/5
 - As a user I want to find products by color
 - As a user I want to search by category of product
 
-- 
+
 ### Setup and Prerequisites
 
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed in order to run this program.
