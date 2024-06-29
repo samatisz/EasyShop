@@ -88,4 +88,4 @@ List resources such as tutorials, articles, or documentation that helped you dur
 
 _I want to thank Steel Potatoes team. Without their support, I would not have made it this far._ 
 - Special thanks to Brya, Ben, Aisha, Amoni, Abirami, and Anita
-- Thank you **Raymond** for your support and for your help with this project. You have been very informative and it has been a pleasure working with you and learning from you. 
+- Thank you **Raymond** for your support and for your help with this project. You have been very informative and it has been a pleasure working with you and learning from you. "We came all this way, but now comes the day - to bid you farewell."
