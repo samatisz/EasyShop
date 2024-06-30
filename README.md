@@ -22,6 +22,9 @@ https://github.com/users/samatisz/projects/5
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed in order to run this program.
 - Java SDK: Make sure Java SDK is installed and configured in IntelliJ.
 
+- This is the link to the Front End part of the website
+https://github.com/samatisz/EasyShopFrontEnd
+
 ### Running the Application
 
 Follow these steps to get your application running within IntelliJ IDEA:
